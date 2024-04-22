@@ -10,3 +10,4 @@ class Config:
   OPENAPI_SWAGGER_UI_URL = 'https://cdn.jsdelivr.net/npm/swagger-ui-dist/'
   SQLALCHEMY_DATABASE_URI = os.environ.get('DB_URL')
   JWT_SECRET_KEY = os.environ.get('JWT_SECRET_KEY')
+  elephant_sql_api_key = os.environ.get('ELEPHANTSQL_API_KEY')
