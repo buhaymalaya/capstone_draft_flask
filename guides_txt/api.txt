@@ -1,0 +1,32 @@
+API TO LOOK UP
+
+PDF - FOR INTAKE FORM
+Formik React
+https://formik.org/docs/overview
+
+
+DIRECT MESSAGE - FOR USER TO COMMUNICATE WITH SAFEHOUSE
+
+
+GOOGLE SEARCH - SINCE 211 DENIED ACCESS
+Your new search engine has been created
+Copy the following code and paste it into your site's <body> section, where you want the search box and the search results to render.
+<script async src="https://cse.google.com/cse.js?cx=53488ca667b0d454b">
+</script>
+<div class="gcse-search"></div>
+
+Search engine ID
+53488ca667b0d454b
+
+
+Public URL
+https://cse.google.com/cse?cx=53488ca667b0d454b
+
+
+EMBED 211 SEARCH BAR?
+
+maybe change validation api to mailcheck.ai?
+https://docs.mailcheck.ai
+
+translation NLP
+https://rapidapi.com/gofitech/api/nlp-translation/

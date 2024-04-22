@@ -1,0 +1,117 @@
+[esc]
+Capstone May 2024
+
+// create database design for CRUD operations
+// create ERD visual guide
+// test out routes
+
+// build out API
+
+
+1. Create HTML pages
+a. decoy landing page
+- [esc] logo top left
+- navbar: Home About Help (API Google Translate dropdown)
+- body: simple python maze game
+- onClick Home: refreshes maze game
+- onClick About:
+The goal is to escape the maze by navigating towards the opposite circle.
+It may seem easy in the game but escaping is a hard feat in real life.
+Remember, you deserve to reach safety. For more support, click HELP.
+- onClick Help: dropdown: Troubleshoot
+
+b. onClick Troubleshoot
+- marquee on top: press esc twice to return to maze game; please revisit only when you are safe
+- [esc] logo top left
+- navbar: Information Resources Discussion Board Intake Profile SignUp/Login
+
+c. onClick Information
+- Information:
+
+What is [esc]?
+It is a web application created by a Domestic Violence (DV) survivor who is an immigrant from the Philippines. 
+Later on, she became a family advocate for those fleeing abuse after seeking refuge from a DV shelter.
+The purpose of [esc] is to create a safe digital space for survivors and hold a community where
+they can vent, share experiences, support each other, and disemminate critical information. Survivors are usually isolated
+from any from of social support by their POH (person of harm) in order to perpetuate and continue the abuse.
+In addition, [esc] has an Intake tool that helps expedite the process of connecting a survivor seeking
+refuge to their respective DV shelters that are located outside of their danger zone. Typically,
+an intake process involves a survivor calling one shelter at a time, sharing their personal information
+such as demographics, relationship history, last DV incident, etc. that the advocate needs.
+Due to the nature of the process, it is extremely time-consuming for both potential client and service provider.
+Through this digital intake form that can be sent to multiple shelters at once, it would increase the chances of the client
+to reach refuge at a much faster rate. It also supports advocates to focus more on the clients they
+currently have at their respective shelters, if they do not have a separate call center.
+This platform also benefits survivors who are non-verbal/hard-of-hearing.
+Please note that this does not replace the phone screening as each safehouse/shelter has their own set of requirements
+for acceptance. Video calls may also be an option for those who are unable to speak during
+the final screening, depending on the shelter's capabilities.
+
+How to Navigate [esc]?
+Click on the Resources tab to find local/digital help.
+Sign up, Create a Profile, and Log in to access the Discussion Board and Intake tool.
+Save critical documents under Profile along with intake form (autosaved).
+
+(Please note: In order to ensure a secure community, a real-time selfie and upload of ID card are required.
+No payment is necessary.)
+
+d. onClick Resources
+
+- Resources: links: National DV Hotline, 211, DPSS, 988, LAFLA, Probono lawyers, VAWA, Native American Help
+- 211 API (search for shelters/safehouses) enter city or zip
+- API chat with a counselor (Natl DV Hotline)
+
+Example links:
+What is Domestic Violence/Intimate Partner Abuse?
+Why do people choose to stay?
+
+e. onClick Discussion Board
+The Discussion Board is a safe community of IPV/DV survivors where you can share your
+experiences without fear of retaliation. Offensive statements and accounts must be reported and will not be tolerated. 
+- verify if logged in / if not, display sign up/login fields
+- Discussion Board: New Topic / Reply to Thread / Upload photo or file option / Edit or Delete Posts
+
+f. onClick Intake
+- verify if logged in / if not, display sign up/login fields
+
+- Intake - intake form to be autosaved to profile under docs and submit when ready to local DV shelters /
+will be a 5-page form that will autosave every time the user types /
+page 1: basic demographics
+incl name, DOB, health, past addresses, substance use, criminal history/
+page 2: information about children, if any /
+page 3: info about POH (person of harm) such
+as basic demographics, photo, locations of work/home, substance use, gang affiliations/
+page 4: relationship and DV history (incl. last incident, police report, if any) /
+page 5: restraining orders/divorce documents/parental rights/child custody + any other helpful information
+
+g. onClick Profile
+- Profile - basic demographics / username without legal name for safety / inbox / sent / compose
+to communicate with DV shelters that have bed space for survivor and their children, if any /
+doc uploads such as ID, intake form, birth certificates, etc
+
+
+TBD - Intern Therapists
+TBD - Intern Lawyers
+
+2. CSS - Bootstrap
+theme: black and white
+font: Press-Start-2P
+Intention: for web app to look like a simple maze game in case of POH being present
+
+3. JS/Python
+Sign up
+Log in
+Log out
+Create Discussion Board
+Timestamp on all CUD
+Reply to thread
+Edit / delete posts
+Edit profile
+Compose and reply messages via inbox, only with active users and connected shelters
+Upload and save docs
+Autosave intake form fields
+Require all fields (type N/A if not applicable)
+Hashmap password
+Feedback comment for user (autosaved) (profile created successfully) (you are now logged in) 
+(intake form submitted to following shelters: 1,2,3,4..)  etc
+

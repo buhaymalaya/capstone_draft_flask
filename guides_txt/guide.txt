@@ -1,0 +1,185 @@
+RENDER INSTRUCTIONS
+
+pip install gunicorn
+pip3 freeze > requirements.txt 
+
+Create start.sh (shell file)
+gunicorn “app:app” unless run.py is still working so “app:run”
+
+Push git changes 
+
+Go to render
+
+New web service
+
+Build and deploy from git repo
+
+If private repo:
+Configure render on github, select repo name
+
+If public:
+Copy paste url from github
+
+Instantiate database on elephantsql first then deploy
+(flask db init, migrate, upgrade)
+
+Start command - gunicorn “app:app”
+
+Environment variables - look at .env >> gunicorn will now be the entry point and we don’t want debug on during production so only keep 3, 4 on render
+
+Input environment variables: copy paste info as is on render
+Db_url
+Jwt secret key
+
+Advanced 
+
+Autodeploy 
+Think - if updating repo, it will deploy
+
+Click create web service
+
+Logs will pop up (like looking at terminal)
+Click logs tab 
+
+Click link after success message
+
+On insomnia
+Use actual render url with corresponding /post /login etc and use token when needed
+Remember - render sleeps after a period so wait for it to get back up 
+
+
+
+FLASK INSTRUCTIONS TEXT - ALWAYS ADD TO VENV PROJECT AS A GUIDE
+
+1. Create virtual environment -- 
+python3 -m venv venv
+(second venv is the name so whatever you choose to name the environment)
+If there is a popup, click no
+
+2. Activate virtual environment (venv) shell - 
+source venv/bin/activate
+type every time you want to activate virtual environment
+Venv\scripsts\activate - windows
+
+3. Install flask before importing - 
+pip3 install flask
+
+4. - run to update whenever a change is made within venv
+pip3 freeze > requirements.txt 
+(contains all dependencies and packages)
+
+
+pip3 install python-dotenv
+
+5. to run file, type: flask run (instead of play button)
+
+6. create .env file outside of venv folder (to contain private/secret info/API/database)
+FLASK_APP = run.py
+FLASK_DEBUG = 1
+
+7. remember to use:
+pip freeze
+
+.gitignore and enumerate files to not follow
+venv
+.env
+__pycache__
+migrations
+
+COLLABS
+
+Grab repo link to collab on
+Clone repo
+To download exact same requirements from cloned repo, type: 
+pip install -r requirements.txt (after activating venv)
+Create your own .env file since that was ignored in original repo
+
+-------
+Pip install marshmallow
+Pip install flask-smorest
+Pip install flask-jwt-extended
+Pip install flask-migrate
+Pip install flask-sqlalchemy
+
+Week 5 Day 4
+
+Syntax for installing packages - Pip install package-name package-name2 …
+
+Pip3 install flask-sqlalchemy flask-migrate psycopg2-binary 
+(-binary for mac)
+
+When making changes:
+Flask db init (if messed up database, delete migration folder)
+Flask db migrate
+Flask db upgrade (pushing)
+
+Create new folder - ‘models’
+Create two files under: user_model.py and post_model.py
+
+
+IF ERROR: ERROR [flask_migrate] Error: Can't locate revision identified by '8692a0f1ae02'
+
+TRY:
+flask db revision --rev-id 5380fba82a80
+flask db migrate
+flask db upgrade
+
+Create python class that will be translated into a SQL table
+Under user model
+
+From app import db (remember that it was instantiated)
+See: user_model.py; class UserModel
+The model is based on the UserSchema
+
+To send class UserModel to elephantsql as a table:
+
+Step 1:
+Set new link to .env
+
+FLASK_APP=run.py
+FLASK_DEBUG=1
+DB_URL=postgresql://rizhampe:8YV5jowI3_zlttEYzViv0r8JgGCLY420@raja.db.elephantsql.com/rizhampe 
+
+Remember to:
+add “ql”
+Change SQLALCHEMY_DATABASE_URI to DB_URL (see above)
+
+Step 2:
+Under class Config under Config.py
+Import os 
+Add SQLALCHEMY_DATABASE_URI = os.environ.get(DB_URL)
+
+Flask run to check if working
+
+App init:
+From models.user_model import UserModel
+Flask db init (if messed up database, delete migration folder)
+Flask db migrate
+Flask db upgrade (pushing)
+
+Check corresponding elephantsql link to see if table has been created
+
+
+
+
+Flask shell - how to run things individually; testing to create user,etc
+
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods post, get, put, delete (CRUD)
+
+pip list
+^^lists packages installed
+
+pip install -r requirements.txt
+^^pip installs all dependencies listed in requirements.txt
+Venv:
+
+
+<name of venv>\scripts\activate
+^^Start venv PC
+
+source venv/bin/activate
+^^Start venv MAC
+
+
+
+

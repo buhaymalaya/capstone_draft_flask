@@ -1,0 +1,43 @@
+[esc]
+
+Home NavBar: Home About Help
+
+Home
+Looping Maze Game 
+
+About
+The goal is to escape the maze by navigating the red dot towards the gray dot. It may seem easy in the game but escaping is a hard feat in real life. Remember, you deserve to reach safety. For more support, click HELP.
+
+
+Help (dropdown menu)
+* Once user is inside one of the Help pages, there is a <marquee> reminder to Press ESC twice to return to maze game 
+Resources - list of links and descriptions (National DV Hotline, 211, DPSS, 988, LAFLA, Probono lawyers, VAWA, Immigration lawyers)
+Support - discussion boards (log in required)
+Intake - intake form to save to profile and submit when ready to local DV shelters (login required)
+Intern Therapists (login required)
+Intern Lawyers (login required)
+
+Sign up   	// 	Log in
+
+Once logged in successfully - navbar at top has Intake / Discussion Board / Profile
+
+Discussion Board
+Title
+Body
+Submit
+Edit
+Delete
+Report
+
+
+Intake Autosaves fields and doc uploads
+(required/optional fields ie basic demographics, family info, relationship/dv history, docs upload section)
+
+The aim of this intake form is to expedite the process of connecting survivors of domestic violence (DV) to potential DV shelters. The typical process entails calling a shelter one at a time and conducting the intake process. This form once completed, can be submitted to multiple shelters at once. Note that it does not replace the final phone intake that some shelters require. If you are deaf/HOH, or non-verbal, technologies such as Zoom or FaceTime may be implemented. 
+
+The acceptance rates are contingent on room availability, client eligibility, and logistics within the survivor’s danger zone. Sign up with a selfie and a legitimate ID card (passport, driver’s license, student ID, etc.) are required in order to mitigate fake accounts created by bots, or worse, persons of harm (POH).  Respectful language, responses, and posts are necessary to maintain accounts.
+
+Note: The intake form can be saved as a pdf on your local device as reference. If you plan to file for a divorce and/or restraining order, a declaration containing the history of relationship and domestic violence are helpful information for your case against your POH. Refer to LAFLA’s website for more information.
+
+Please ensure that all information is truthful and correct. Once submitted to respective DV shelters, it cannot be altered. You can still clarify such information during the final screening with an advocate.
+
