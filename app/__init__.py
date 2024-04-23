@@ -23,12 +23,6 @@ from resources.discussion import bp as post_bp
 app.register_blueprint(post_bp)
 from resources.user import bp as user_bp
 app.register_blueprint(user_bp)
+from resources.maze import bp as maze_bp
+app.register_blueprint(maze_bp)
 
-# embed py game into react using iframe with endpoint
-from . import bnw_maze  
-
-@app.route('/maze-game')
-def maze_game():
-    # Use functionality from bnw_maze.py to generate and return the maze game content
-    maze_content = bnw_maze.generate_maze()
-    return maze_content
