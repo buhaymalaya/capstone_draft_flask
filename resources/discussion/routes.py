@@ -48,7 +48,7 @@ class DiscussionBoardList(MethodView):
 
 # search field - keyword
 # tested
-@bp.route('/post/search?keyword=the_keyword') 
+@bp.route('/post/search') # search?keyword=the_keyword, nothin in json body
 class SearchPosts(MethodView):
 
     @bp.arguments(SearchSchema, location='query')
