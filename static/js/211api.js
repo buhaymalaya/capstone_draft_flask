@@ -18,10 +18,11 @@ searchBtn.addEventListener('click', () => {
     searchAPI(searchTerm, location);
 });
 
-const searchAPI = async (searchTerm, location) => {
+const searchAPI = async () => {
     try {
-        const response = await fetch(`${apiUrl}/search/v1/api/Search/Keyword?Keyword=${searchTerm}&Top=10&OrderBy=Relevance&SearchMode=Any&IncludeStateNationalRecords=true&ReturnTaxonomyTermsIfNoResults=false&SearchWithin=false`, {
+        const response = await fetch('https://api.211.org/search/v1/api/Search/Keyword?Keyword=home&Top=10&OrderBy=Relevance&SearchMode=Any&IncludeStateNationalRecords=true&ReturnTaxonomyTermsIfNoResults=false&SearchWithin=false', {
             headers: {
+                'Cache-Control': 'no-cache',
                 'Api-Key': apiKey211
             }
         });
