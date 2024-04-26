@@ -40,7 +40,6 @@ class DiscussionBoardList(MethodView):
 
     # All posts in discussion board
     # tested, nothing in json body
-    @jwt_required()
     @bp.response(200, PostSchema(many=True))
     # user can view threads created by other users
     def get(self):
