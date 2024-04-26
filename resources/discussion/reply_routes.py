@@ -4,7 +4,7 @@ from flask_smorest import abort
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from models.reply_model import ReplyModel
 from models.post_model import PostModel
-from schemas import EditReplySchema, ReplySchema
+from schemas import EditReplySchema, ReplySchema, PostSchema
 from . import bp
 
 # Reply to discussion board post
@@ -68,3 +68,24 @@ class DeleteReply(MethodView):
         reply.delete_reply()
 
         return {'Message': 'Reply deleted successfully'}, 204
+
+
+@bp.route('/postswithreplies')
+def get_posts_with_replies():
+    posts = PostModel.query.all()
+
+    replies = ReplyModel.query.all()
+
+    # serialize posts and replies
+    posts_data = PostSchema(many=True).dump(posts)
+    replies_data = ReplySchema(many=True).dump(replies)
+
+    # create nested structure containing posts and their corresponding replies
+    posts_with_replies = []
+    for post_data in posts_data:
+        # find replies corresponding to this post
+        post_replies = [reply_data for reply_data in replies_data if reply_data['post_id'] == post_data['id']]
+        post_data['replies'] = post_replies
+        posts_with_replies.append(post_data)
+
+    return jsonify(posts_with_replies)

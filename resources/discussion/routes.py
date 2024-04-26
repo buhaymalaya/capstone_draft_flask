@@ -62,6 +62,7 @@ class SearchPosts(MethodView):
 
         return posts
 
+
 # SPECIFIC POSTS
 
 @bp.route('/post/<post_id>')
