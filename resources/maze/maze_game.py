@@ -2,6 +2,7 @@ import pygame
 import sys
 import random
 from flask import Flask, jsonify
+from flask_cors import CORS
 
 # Constants
 WIDTH, HEIGHT = 800, 600
