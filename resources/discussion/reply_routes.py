@@ -8,7 +8,7 @@ from schemas import EditReplySchema, ReplySchema, PostSchema
 from . import bp
 
 # Reply to discussion board post
-@bp.route('/post/<int:post_id>/reply')
+@bp.route('/post/<post_id>/reply')
 class Reply(MethodView):
     # tested, but alter code further so user_id autopopulates instead of needing
     # to input in json body along with body and post_id
