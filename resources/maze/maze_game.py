@@ -92,8 +92,7 @@ def get_game_state():
         'goal_position': (game.goal_x, game.goal_y)
     })
 
-if __name__ == "__main__":
-    app.run()
+
 
 # Main game loop
 running = True
