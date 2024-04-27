@@ -10,8 +10,7 @@ from . import bp
 # Reply to discussion board post
 @bp.route('/post/<int:post_id>/reply')
 class Reply(MethodView):
-    # tested, but alter code further so user_id autopopulates instead of needing
-    # to input in json body along with body and post_id
+   
     # REVISIT AND REVISE
     @jwt_required()  
     @bp.arguments(ReplySchema)  
@@ -26,15 +25,17 @@ class Reply(MethodView):
         current_user_id = get_jwt_identity()
 
         # create a new reply instance
-        reply = ReplyModel.from_dict(reply_data)
+        reply = ReplyModel()
 
-        # set  user_id and post_id
+        # set user_id and post_id
         reply.user_id = current_user_id
         reply.post_id = post_id
+        reply.body = reply_data['body']  
 
         reply.save_reply()
 
         return reply, 201
+
 
 
 # Edit reply
