@@ -2,7 +2,6 @@ import pygame
 import sys
 import random
 from flask import Flask, jsonify
-from flask_cors import CORS
 
 # Constants
 WIDTH, HEIGHT = 800, 600
@@ -93,6 +92,9 @@ def get_game_state():
         'goal_position': (game.goal_x, game.goal_y)
     })
 
+if __name__ == "__main__":
+    app.run()
+
 # Main game loop
 running = True
 while running:
@@ -135,3 +137,4 @@ while running:
 # Quit Pygame
 pygame.quit()
 sys.exit()
+
