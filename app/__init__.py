@@ -10,7 +10,6 @@ app.config.from_object(Config)
 api = Api(app)
 jwt = JWTManager(app)
 CORS(app)
-    #  resources={r"/*": {"origins": "http://localhost:5173/"}})
 db = SQLAlchemy(app) #instantiate
 migrate = Migrate(app, db) 
 
@@ -24,5 +23,6 @@ from resources.discussion import bp as post_bp
 app.register_blueprint(post_bp)
 from resources.user import bp as user_bp
 app.register_blueprint(user_bp)
-
+# from resources.maze import bp as maze_bp
+# app.register_blueprint(maze_bp)
 
