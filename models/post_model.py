@@ -10,7 +10,7 @@ class PostModel(db.Model): #sqlalchemy model class; think instructions for a leg
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    title = db.Column(db.String(50), nullable = False, unique = True) #string is varchar; setting constraints
+    title = db.Column(db.String(), nullable = False, unique = True) #string is varchar; setting constraints
     body = db.Column(db.String(), nullable = True, unique = True)
     time_created = db.Column(DateTime, default=datetime.utcnow)
     
