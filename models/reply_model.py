@@ -6,7 +6,7 @@ class ReplyModel(db.Model):
     __tablename__ = 'replies'
 
     id = db.Column(db.Integer, primary_key=True)
-    body = db.Column(db.String(), nullable=False)
+    body = db.Column(db.Text(), nullable=False)
     time_created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     post_id = db.Column(db.Integer, db.ForeignKey('posts.id'), nullable=False)
