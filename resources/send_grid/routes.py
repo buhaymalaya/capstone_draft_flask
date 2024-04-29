@@ -4,11 +4,12 @@ from dotenv import load_dotenv
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 
-# Load environment variables from .env file
+# load environment variables from .env file
 load_dotenv()
 
 app = Flask(__name__)
 
+# retrieve the SendGrid API key from the environment variable
 sendgrid_api_key = os.environ.get('SENDGRID_API_KEY')
 
 @app.route('/submitintake', methods=['POST'])
@@ -36,7 +37,6 @@ def send_email(form_data):
 
     response = sg.send(message)
     return response
-    
 
-if __name__ == '__main__':
-    app.run(debug=True)
+if __name__ == "__main__":
+    app.run(debug=True)  
