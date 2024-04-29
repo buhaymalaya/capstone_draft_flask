@@ -11,3 +11,4 @@ class Config:
   SQLALCHEMY_DATABASE_URI = os.environ.get('DB_URL')
   JWT_SECRET_KEY = os.environ.get('JWT_SECRET_KEY')
   elephant_sql_api_key = os.environ.get('ELEPHANTSQL_API_KEY')
+  sendgrid_api_key = os.environ.get('SENDGRID_API_KEY')
