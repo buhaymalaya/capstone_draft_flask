@@ -69,7 +69,7 @@ class User(MethodView):
         user = UserModel.query.filter_by(username=username).first()
         if user:
             user.del_user()
-            return {'Message': username + 'deleted'}, 200
+            return {'Message': username + ' deleted'}, 200
         abort(404, message='Error: User not found')
         
 
