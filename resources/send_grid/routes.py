@@ -51,10 +51,11 @@ def send_email(form_data):
     sg = SendGridAPIClient(sendgrid_api_key)
 
     try:
-        response = sg.send(message)
-        return {'message': 'Email sent successfully'}, 200
+        form_data = request.json
+        send_email(form_data)
+        return jsonify({'message': 'Email sent successfully'}), 200
     except Exception as e:
-        return {'error': str(e)}, 500
+        return jsonify({'error': str(e)}), 500
 
 if __name__ == "__main__":
     app.run(debug=True)
