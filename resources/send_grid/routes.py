@@ -25,35 +25,34 @@ def submit_intake():
         return jsonify({'error': str(e)}), 500
 
 def send_email(form_data):
-    to_email = form_data['to']
-    subject = form_data['subject']
-    content = form_data['html_content']
-    pdf_data = form_data['pdf_data']  # Double-check if pdf is base64-encoded string
-
-    pdf_bytes = base64.b64decode(pdf_data)
-
-    message = Mail(
-        from_email='buhaymalaya@icloud.com',
-        to_emails=to_email,
-        subject=subject,
-        html_content=content
-    )
-    
-    attachment = Attachment(
-        FileContent(base64.b64encode(pdf_bytes).decode()),
-        FileName('attachment.pdf'),
-        FileType('application/pdf'),
-        Disposition('attachment')
-    )
-
-    message.attachment = attachment
-
-    sg = SendGridAPIClient(sendgrid_api_key)
-
     try:
-        form_data = request.json
-        send_email(form_data)
-        return jsonify({'message': 'Email sent successfully'}), 200
+        to_email = form_data['to']
+        subject = form_data['subject']
+        content = form_data['html_content']
+        pdf_data = form_data['pdf_data']  # Double-check if pdf is base64-encoded string
+
+        pdf_bytes = base64.b64decode(pdf_data)
+
+        message = Mail(
+            from_email='buhaymalaya@icloud.com',
+            to_emails=to_email,
+            subject=subject,
+            html_content=content
+        )
+        
+        attachment = Attachment(
+            FileContent(base64.b64encode(pdf_bytes).decode()),
+            FileName('attachment.pdf'),
+            FileType('application/pdf'),
+            Disposition('attachment')
+        )
+
+        message.attachment = attachment
+
+        sg = SendGridAPIClient(sendgrid_api_key)
+        response = sg.send(message)
+        return response
+        
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
