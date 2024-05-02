@@ -12,7 +12,7 @@ load_dotenv()
 app = Flask(__name__)
 
 # retrieve the SendGrid API key from the environment variable
-sendgrid_api_key = os.environ.get('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')
+sendgrid_api_key = os.environ.get('SENDGRID_API_KEY')
 
 @app.route('/submitintake', methods=['POST'])
 # def submit_intake():
