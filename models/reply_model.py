@@ -8,7 +8,7 @@ class ReplyModel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     body = db.Column(db.Text(), nullable=False)
     time_created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    username = db.Column(db.String, db.ForeignKey('user.username'), nullable=False)
+    username = db.Column(db.String, db.ForeignKey('user.username'))
     post_id = db.Column(db.Integer, db.ForeignKey('posts.id'), nullable=False)
 
 
