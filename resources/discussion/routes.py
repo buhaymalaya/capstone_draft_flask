@@ -5,6 +5,7 @@ from uuid import uuid4
 from . import bp
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from models.post_model import PostModel
+from models.user_model import UserModel
 from schemas import UserSchema, PostSchema, PostWithUserSchema, SearchSchema
 from flask_jwt_extended import get_jwt_identity
 
@@ -13,26 +14,22 @@ class DiscussionBoardList(MethodView):
     # user can create a discussion board thread by posting when logged in
     # include title and body
     @jwt_required()
-    @bp.response(201, UserSchema)
+    @bp.response(201, PostSchema)
     @bp.arguments(PostSchema)
     def post(self, post_data):
 
         try:
             # current user's ID
-            user_id = get_jwt_identity()
-
-            # new PostModel instance
-            post = PostModel()
-
-            # get fields from the post_data object
-            post.from_dict(post_data)
-
-            # set the user_id
-            post.user_id = user_id
-
-            post.save_post()
-
-            return post
+            username = get_jwt_identity()
+            user = UserModel.query.filter_by(username=username).first()
+            if user:
+                post = PostModel()
+                post.from_dict(post_data)
+                post.user_id = user.id
+                post.save_post()
+                return post
+            else:
+                abort(400, message="User not found.")
         
         except Exception as e:
             abort(400, message=f"Failed to post: {str(e)}")
