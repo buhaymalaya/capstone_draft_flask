@@ -27,6 +27,6 @@ class PostModel(db.Model): #sqlalchemy model class; think instructions for a leg
         db.session.commit()
 
     def from_dict(self, data):
-            for field in ['title', 'body', 'user_id']:  
+            for field in ['title', 'body', 'username']:  
                 if field in data:
                     setattr(self, field, data[field])
