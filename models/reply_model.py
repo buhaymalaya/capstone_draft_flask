@@ -8,7 +8,7 @@ class ReplyModel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     body = db.Column(db.Text(), nullable=False)
     time_created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    username = db.Column(db.String, db.ForeignKey('user.username'), nullable=False)
     post_id = db.Column(db.Integer, db.ForeignKey('posts.id'), nullable=False)
 
 
@@ -29,7 +29,7 @@ class ReplyModel(db.Model):
         return cls(
             body=data['body'],
             time_created=data.get('time_created'), 
-            user_id=data['user_id'],
+            username=data['username'],
             post_id=data['post_id']
         )
     
