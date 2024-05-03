@@ -8,8 +8,9 @@ class ReplyModel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     body = db.Column(db.Text(), nullable=False)
     time_created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    username = db.Column(db.String, db.ForeignKey('user.username'))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     post_id = db.Column(db.Integer, db.ForeignKey('posts.id'), nullable=False)
+    username = db.Column(db.String, db.ForeignKey('user.username'))
 
 
     def save_reply(self): 
@@ -28,7 +29,8 @@ class ReplyModel(db.Model):
     def from_dict(cls, data):
         return cls(
             body=data['body'],
-            time_created=data.get('time_created'), 
+            time_created=data.get('time_created'),
+            user_id=data['user_id'], 
             username=data['username'],
             post_id=data['post_id']
         )
