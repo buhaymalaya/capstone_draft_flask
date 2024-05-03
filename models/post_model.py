@@ -10,7 +10,6 @@ class PostModel(db.Model): #sqlalchemy model class; think instructions for a leg
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String, db.ForeignKey('user.username'))
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     title = db.Column(db.String(), nullable = False, unique = True) #string is varchar; setting constraints
     body = db.Column(db.Text(), nullable = True, unique = True)
     time_created = db.Column(DateTime, default=datetime.utcnow)
@@ -28,6 +27,6 @@ class PostModel(db.Model): #sqlalchemy model class; think instructions for a leg
         db.session.commit()
 
     def from_dict(self, data):
-            for field in ['title', 'body', 'username', 'user_id']:  
+            for field in ['title', 'body', 'username']:  
                 if field in data:
                     setattr(self, field, data[field])

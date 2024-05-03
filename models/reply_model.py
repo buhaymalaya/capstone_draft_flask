@@ -10,7 +10,6 @@ class ReplyModel(db.Model):
     time_created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     post_id = db.Column(db.Integer, db.ForeignKey('posts.id'), nullable=False)
-    username = db.Column(db.String, db.ForeignKey('user.username'))
 
 
     def save_reply(self): 
@@ -31,7 +30,6 @@ class ReplyModel(db.Model):
             body=data['body'],
             time_created=data.get('time_created'),
             user_id=data['user_id'], 
-            username=data['username'],
             post_id=data['post_id']
         )
     
