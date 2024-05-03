@@ -5,7 +5,8 @@ class PostSchema(Schema):
     title = fields.Str(required=True)
     body = fields.Str(required=True)
     time_created = fields.Str(dump_only=True)
-    user_id = fields.Int()
+    user_id = fields.Int(dump_only=True)
+    # username = fields.Str(dump_only=True)
 
 class UserSchema(Schema):
     id = fields.Str(dump_only=True)
