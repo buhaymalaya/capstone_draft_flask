@@ -20,7 +20,7 @@ class ReplySchema(Schema):
     id = fields.Str(dump_only=True)
     body = fields.Str(required=True)
     time_created = fields.Str(dump_only=True)
-    username = fields.Str()
+    user_id = fields.Int()
     post_id = fields.Int()
 
 class EditReplySchema(Schema):
