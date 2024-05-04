@@ -4,14 +4,16 @@ from flask_smorest import abort
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from models.reply_model import ReplyModel
 from models.post_model import PostModel
+from models.user_model import UserModel
 from schemas import EditReplySchema, ReplySchema, PostSchema
 from . import bp
 
 # Reply to discussion board post
+from flask_jwt_extended import get_jwt_identity
+
 @bp.route('/post/<int:post_id>/reply')
 class Reply(MethodView):
    
-    # REVISIT AND REVISE
     @jwt_required()  
     @bp.arguments(ReplySchema)  
     @bp.response(201, ReplySchema)  
@@ -22,13 +24,18 @@ class Reply(MethodView):
             abort(404, message="Original post not found")
 
         # get the current user's identity
-        current_user_id = get_jwt_identity()
+        current_username = get_jwt_identity()
+
+        # Retrieve the user from the database based on the username
+        current_user = UserModel.query.filter_by(username=current_username).first()
+        if not current_user:
+            abort(404, message="User not found")
 
         # create a new reply instance
         reply = ReplyModel()
 
         # set user_id and post_id
-        reply.user_id = current_user_id
+        reply.user_id = current_user.id
         reply.post_id = post_id
         reply.body = reply_data['body']  
 

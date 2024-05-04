@@ -78,25 +78,39 @@ class Post(MethodView):
 
 # edit specific post once logged in
 # tested, incl title and body in json body with auth token for user_id
+    from flask_jwt_extended import get_jwt_identity
+
     @jwt_required()   
     @bp.arguments(PostSchema)
     @bp.response(201, PostSchema)
     def put(self, post_data, post_id):
-        current_user_id = get_jwt_identity()
+
+        # Get the current user's username from the JWT token
+        current_username = get_jwt_identity()
+
+        # Retrieve the current user from the database based on the username
+        current_user = UserModel.query.filter_by(username=current_username).first()
+
+        # Check if the current user exists
+        if not current_user:
+            abort(404, message="User not found")
+
+        # Retrieve the post from the database based on the post_id
         post = PostModel.query.get(post_id)
         if not post:
             abort(400, message="Post not found")
 
         # Check if the current user is the owner of the post
-        if current_user_id != post.user_id:
+        if current_user.id != post.user_id:
             abort(403, message="You are not allowed to edit this post.")
 
         # Update the post attributes and save it
-        post_data['user_id'] = current_user_id
+        post_data['user_id'] = current_user.id
         post.from_dict(post_data)
         post.save_post()
 
         return post
+
 
 
 # delete specific post once logged in
